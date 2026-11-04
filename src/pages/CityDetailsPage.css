@@ -54,3 +54,15 @@
   border-radius: var(--radius);
   overflow: hidden; /* כדי שהפינות המעוגלות יחתכו גם את השורות שבפנים */
 }
+
+.city-details-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.city-details-title h2 {
+  margin: 0;
+}

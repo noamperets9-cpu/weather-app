@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router'
+import FavoriteButton from '../components/FavoriteButton'
 import ForecastDay from '../components/ForecastDay'
 import StatusMessage from '../components/StatusMessage'
 import { findCityById } from '../data/cities'
@@ -8,7 +9,12 @@ import { getWeatherInfo } from '../utils/weatherCodes'
 import type { ApiCurrentWeather, ApiForecastResponse, City, DailyForecast } from '../types/weather'
 import './CityDetailsPage.css'
 
-function CityDetailsPage() {
+interface CityDetailsPageProps {
+  favoriteIds: string[]
+  onToggleFavorite: (cityId: string) => void
+}
+
+function CityDetailsPage({ favoriteIds, onToggleFavorite }: CityDetailsPageProps) {
   // id נלקח מהכתובת: /cities/tel-aviv → id = "tel-aviv"
   const { id } = useParams()
   const city = findCityById(id)
@@ -74,9 +80,15 @@ function CityDetailsPage() {
         ← חזרה לרשימה
       </Link>
 
-      <h2>
-        {city.name} <span className="city-details-country">{city.country}</span>
-      </h2>
+      <div className="city-details-title">
+        <h2>
+          {city.name} <span className="city-details-country">{city.country}</span>
+        </h2>
+        <FavoriteButton
+          isFavorite={favoriteIds.includes(city.id)}
+          onToggle={() => onToggleFavorite(city.id)}
+        />
+      </div>
 
       {isLoading && <StatusMessage type="loading" text="טוען תחזית..." />}
 

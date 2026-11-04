@@ -1,17 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import CityCard from '../components/CityCard'
 import SearchBar from '../components/SearchBar'
 import StatusMessage from '../components/StatusMessage'
-import { CITIES } from '../data/cities'
-import { buildCurrentWeatherUrl, toCityWeatherList } from '../api/weatherApi'
+import { useCitiesWeather } from '../hooks/useCitiesWeather'
 import { filterCities, type ConditionFilter } from '../utils/filterCities'
-import type { ApiForecastResponse, CityWeather } from '../types/weather'
 
-function HomePage() {
-  // שלושת המצבים של העמוד: המידע עצמו, האם עדיין טוען, והאם הייתה שגיאה
-  const [citiesWeather, setCitiesWeather] = useState<CityWeather[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+interface HomePageProps {
+  favoriteIds: string[]
+  onToggleFavorite: (cityId: string) => void
+}
+
+function HomePage({ favoriteIds, onToggleFavorite }: HomePageProps) {
+  // המידע מה-API — ה-fetch עצמו נמצא ב-hook (src/hooks/useCitiesWeather.ts)
+  const { citiesWeather, isLoading, error } = useCitiesWeather()
 
   // מה שהמשתמש בחר בחיפוש ובסינון
   const [query, setQuery] = useState('')
@@ -20,40 +21,6 @@ function HomePage() {
   // הרשימה המסוננת מחושבת מחדש בכל רינדור — לא שומרים אותה ב-state,
   // כי אפשר תמיד לחשב אותה מהמידע ומהבחירות של המשתמש
   const visibleCities = filterCities(citiesWeather, query, condition)
-
-  // רץ פעם אחת כשהעמוד עולה (מערך תלויות ריק)
-  useEffect(() => {
-    // אם העמוד נסגר לפני שהתשובה הגיעה — לא מעדכנים state של רכיב שכבר לא על המסך
-    let ignore = false
-
-    async function loadWeather() {
-      try {
-        const response = await fetch(buildCurrentWeatherUrl(CITIES))
-        if (!response.ok) {
-          throw new Error(`שגיאת שרת: ${response.status}`)
-        }
-        const data: ApiForecastResponse[] = await response.json()
-        if (!ignore) {
-          setCitiesWeather(toCityWeatherList(CITIES, data))
-        }
-      } catch {
-        if (!ignore) {
-          setError('לא הצלחנו לטעון את מזג האוויר. בדקו את החיבור לאינטרנט ונסו שוב.')
-        }
-      } finally {
-        if (!ignore) {
-          setIsLoading(false)
-        }
-      }
-    }
-
-    loadWeather()
-
-    // פונקציית ניקוי — רצה כשהרכיב יורד מהמסך
-    return () => {
-      ignore = true
-    }
-  }, [])
 
   return (
     <section>
@@ -77,7 +44,12 @@ function HomePage() {
           ) : (
             <div className="city-grid">
               {visibleCities.map((weather) => (
-                <CityCard key={weather.city.id} weather={weather} />
+                <CityCard
+                  key={weather.city.id}
+                  weather={weather}
+                  isFavorite={favoriteIds.includes(weather.city.id)}
+                  onToggleFavorite={onToggleFavorite}
+                />
               ))}
             </div>
           )}
