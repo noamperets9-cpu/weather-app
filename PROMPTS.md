@@ -95,3 +95,16 @@
 **14:27 · claude**
 
 > יצא טוב?
+
+**14:30 · claude**
+
+> <ide_opened_file>The user opened the file c:\נועם\פרויקט פלטפורמות web\PROMPTS.md in the IDE. This may or may not be related to the current task.</ide_opened_file>
+> עבד
+
+**14:33 · claude**
+
+> סגור שאתה מתכוון להוסיף הערה בprompts.md  למה אתה מתכוון קצת איבדתי אותך כאן?
+
+**14:34 · claude**
+
+> כן אז לא הוספתי אשמח שרק בזה תתמקד עכשיו ונחזור לתהליך שהיינו
