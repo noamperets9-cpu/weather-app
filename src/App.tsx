@@ -50,7 +50,12 @@ function App() {
               <FavoritesPage favoriteIds={favoriteIds} onToggleFavorite={handleToggleFavorite} />
             }
           />
-          <Route path="/random" element={<RandomCityPage />} />
+          <Route
+            path="/random"
+            element={
+              <RandomCityPage favoriteIds={favoriteIds} onToggleFavorite={handleToggleFavorite} />
+            }
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

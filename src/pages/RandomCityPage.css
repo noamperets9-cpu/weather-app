@@ -1,0 +1,32 @@
+.random-city {
+  max-width: 480px;
+}
+
+.draw-button {
+  font: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 1.25rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.15s;
+}
+
+.draw-button:hover {
+  background: #165bb5;
+  transform: scale(1.03);
+}
+
+.draw-button:focus-visible {
+  outline: 3px solid #9cc3f5;
+  outline-offset: 2px;
+}
+
+.random-hint {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
