@@ -1,0 +1,37 @@
+.search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.search-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
+/* שדה החיפוש תופס את רוב השורה, התפריט נשאר קטן */
+.search-field:first-child {
+  flex: 1;
+  min-width: 200px;
+}
+
+.search-field input,
+.search-field select {
+  font: inherit;
+  font-size: 1rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.search-field input:focus,
+.search-field select:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+}

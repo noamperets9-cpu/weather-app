@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import CityCard from '../components/CityCard'
+import SearchBar from '../components/SearchBar'
 import StatusMessage from '../components/StatusMessage'
 import { CITIES } from '../data/cities'
 import { buildCurrentWeatherUrl, toCityWeatherList } from '../api/weatherApi'
+import { filterCities, type ConditionFilter } from '../utils/filterCities'
 import type { ApiForecastResponse, CityWeather } from '../types/weather'
 
 function HomePage() {
@@ -10,6 +12,14 @@ function HomePage() {
   const [citiesWeather, setCitiesWeather] = useState<CityWeather[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+
+  // מה שהמשתמש בחר בחיפוש ובסינון
+  const [query, setQuery] = useState('')
+  const [condition, setCondition] = useState<ConditionFilter>('all')
+
+  // הרשימה המסוננת מחושבת מחדש בכל רינדור — לא שומרים אותה ב-state,
+  // כי אפשר תמיד לחשב אותה מהמידע ומהבחירות של המשתמש
+  const visibleCities = filterCities(citiesWeather, query, condition)
 
   // רץ פעם אחת כשהעמוד עולה (מערך תלויות ריק)
   useEffect(() => {
@@ -54,11 +64,24 @@ function HomePage() {
       {error && <StatusMessage type="error" text={error} />}
 
       {!isLoading && !error && (
-        <div className="city-grid">
-          {citiesWeather.map((weather) => (
-            <CityCard key={weather.city.id} weather={weather} />
-          ))}
-        </div>
+        <>
+          <SearchBar
+            query={query}
+            condition={condition}
+            onQueryChange={setQuery}
+            onConditionChange={setCondition}
+          />
+
+          {visibleCities.length === 0 ? (
+            <StatusMessage type="info" text="לא נמצאו ערים" />
+          ) : (
+            <div className="city-grid">
+              {visibleCities.map((weather) => (
+                <CityCard key={weather.city.id} weather={weather} />
+              ))}
+            </div>
+          )}
+        </>
       )}
     </section>
   )
