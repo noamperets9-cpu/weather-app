@@ -75,4 +75,5 @@
 
 ## מסמכים נוספים
 - [tasks.md](tasks.md) — תוכנית העבודה, משימה אחרי משימה.
-- [docs/architecture.md](docs/architecture.md) — מבנה הרכיבים וזרימת המידע (ייכתב בהמשך).
+- [docs/architecture.md](docs/architecture.md) — מבנה הרכיבים וזרימת המידע.
+- [README.md](README.md) — איך מריצים את האפליקציה ואת הבדיקות.
