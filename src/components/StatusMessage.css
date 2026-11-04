@@ -1,0 +1,17 @@
+.status-message {
+  padding: 1rem;
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.status-error {
+  background: #fdecec;
+  border-color: #f3b4b4;
+  color: #9b1c1c;
+}
+
+.status-loading {
+  color: var(--color-muted);
+}

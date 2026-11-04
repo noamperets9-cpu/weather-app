@@ -47,3 +47,11 @@ h3 {
   margin: 0 auto;
   padding: 1rem;
 }
+
+/* רשת כרטיסים — משמשת ברשימה ובמועדפים.
+   auto-fill + minmax: כמה עמודות שנכנסות, כל אחת לפחות 260px (במסך צר — עמודה אחת) */
+.city-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}

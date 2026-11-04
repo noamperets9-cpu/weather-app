@@ -31,7 +31,7 @@ React + TypeScript עם `npm create vite@latest . -- --template react-ts`.
 התקנת Vitest ו-`@vitest/ui`, סקריפטים `test` ו-`test:ui`. בדיקות להמרת `weather_code`.
 **Done when:** `npm test` מריץ ועובר; `npm run test:ui` פותח את Vitest UI בדפדפן ומציג את הבדיקות בירוק.
 
-### 8 · עמוד הרשימה עם מידע אמיתי
+### ✅ 8 · עמוד הרשימה עם מידע אמיתי
 `fetch` אחד בתוך `useEffect` למזג האוויר בכל הערים. רכיבים `CityCard` ו-`StatusMessage` (טוען / שגיאה). רשימה עם `map` ו-`key` ייחודי.
 **Done when:** רואים "טוען..." ואז כרטיס לכל עיר עם טמפרטורה ומצב; כשמנתקים אינטרנט ומרעננים (או משנים זמנית את הכתובת של ה-API) — מופיעה הודעת שגיאה; אין אזהרות `key` בקונסול.
 
