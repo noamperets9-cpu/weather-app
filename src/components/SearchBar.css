@@ -35,3 +35,10 @@
   outline: 2px solid var(--color-primary);
   outline-offset: 1px;
 }
+
+/* במסך צר — החיפוש והתפריט אחד מתחת לשני, כל אחד ברוחב מלא */
+@media (max-width: 480px) {
+  .search-field {
+    flex: 1 1 100%;
+  }
+}

@@ -20,6 +20,7 @@ function SearchBar({ query, condition, onQueryChange, onConditionChange }: Searc
         <span>חיפוש עיר</span>
         <input
           type="search"
+          name="city-search"
           placeholder="למשל: תל אביב"
           value={query}
           onChange={(event) => onQueryChange(event.target.value)}
@@ -29,6 +30,7 @@ function SearchBar({ query, condition, onQueryChange, onConditionChange }: Searc
       <label className="search-field">
         <span>מצב מזג אוויר</span>
         <select
+          name="condition"
           value={condition}
           onChange={(event) => onConditionChange(event.target.value as ConditionFilter)}
         >

@@ -5,8 +5,10 @@
   --color-text: #1f2a37;
   --color-muted: #5b6b7f;
   --color-primary: #1e6fd9;
+  --color-primary-dark: #1557ad;
   --color-border: #d6e1ee;
   --radius: 12px;
+  --max-width: 1000px;
 
   font-family: system-ui, 'Segoe UI', Arial, sans-serif;
   line-height: 1.5;
@@ -30,11 +32,39 @@ h3 {
   line-height: 1.2;
 }
 
-/* שלד האפליקציה */
+a {
+  color: var(--color-primary);
+}
+
+/* מסגרת מקלדת ברורה לכל קישור — חשוב למי שמנווט עם Tab */
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ===== שלד האפליקציה ===== */
+
+/* .app — הכותרת למעלה, התוכן באמצע, ה-footer תמיד בתחתית גם כשיש מעט תוכן */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* רוחב מקסימלי משותף לכותרת, לתוכן ול-footer — כך הכול מיושר באותו קו */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
 .app-header {
-  background: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   color: #fff;
-  padding: 1rem;
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 .app-header h1 {
@@ -43,9 +73,17 @@ h3 {
 }
 
 .app-main {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1rem;
+  flex: 1;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+.app-footer {
+  padding: 1rem 0;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  text-align: center;
 }
 
 /* רשת כרטיסים — משמשת ברשימה ובמועדפים.
@@ -54,4 +92,20 @@ h3 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1rem;
+}
+
+/* ===== מסך צר (טלפון) ===== */
+@media (max-width: 600px) {
+  .app-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .app-main {
+    padding-top: 1rem;
+  }
+
+  /* בטלפון אין מקום ל-260px + ריווח — עמודה אחת ברוחב מלא */
+  .city-grid {
+    grid-template-columns: 1fr;
+  }
 }

@@ -26,11 +26,14 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>מזג אוויר בערים שלי</h1>
-        <NavBar />
+        {/* container — מיישר את תוכן הכותרת עם תוכן העמוד (אותו רוחב מקסימלי) */}
+        <div className="container">
+          <h1>🌤️ מזג אוויר בערים שלי</h1>
+          <NavBar />
+        </div>
       </header>
 
-      <main className="app-main">
+      <main className="app-main container">
         <Routes>
           <Route
             path="/"
@@ -59,6 +62,16 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
+
+      <footer className="app-footer">
+        <div className="container">
+          נתוני מזג האוויר:{' '}
+          <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">
+            Open-Meteo
+          </a>{' '}
+          (CC BY 4.0)
+        </div>
+      </footer>
     </div>
   )
 }
