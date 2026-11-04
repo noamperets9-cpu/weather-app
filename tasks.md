@@ -59,5 +59,5 @@ React + TypeScript עם `npm create vite@latest . -- --template react-ts`.
 `README.md` (מה האפליקציה עושה, איך מריצים אותה ואת הבדיקות, איזה API) ו-`docs/architecture.md` (מבנה הרכיבים וזרימת המידע).
 **Done when:** מי שמוריד את ה-repo יכול להריץ את האפליקציה ואת הבדיקות רק לפי ה-README.
 
-### 15 · בדיקה סופית
+### ✅ 15 · בדיקה סופית
 **Done when:** `npm run build`, `npm test` ו-`npm run lint` עוברים; אין שגיאות בקונסול באף עמוד; ה-repo ציבורי וכל הקבצים ב-GitHub.
