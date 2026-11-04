@@ -27,7 +27,7 @@ React + TypeScript עם `npm create vite@latest . -- --template react-ts`.
 קובץ טיפוסים (`City`, תשובות ה-API של Open-Meteo), רשימת הערים עם קואורדינטות, ופונקציה שממירה `weather_code` לתיאור ואייקון.
 **Done when:** הקבצים קיימים, אין `any`, `npm run build` עובר.
 
-### 7 · הגדרת Vitest ובדיקות ראשונות
+### ✅ 7 · הגדרת Vitest ובדיקות ראשונות
 התקנת Vitest ו-`@vitest/ui`, סקריפטים `test` ו-`test:ui`. בדיקות להמרת `weather_code`.
 **Done when:** `npm test` מריץ ועובר; `npm run test:ui` פותח את Vitest UI בדפדפן ומציג את הבדיקות בירוק.
 
