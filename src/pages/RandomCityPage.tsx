@@ -64,7 +64,7 @@ function RandomCityPage({ favoriteIds, onToggleFavorite }: RandomCityPageProps) 
   return (
     <section className="random-city">
       <h2>עיר אקראית</h2>
-      <p>לא יודעים לאן לטוס? תנו לגורל להחליט.</p>
+      <p>סקרנים מה מזג האוויר במקום אחר בעולם? לחצו והגרילו עיר.</p>
 
       <button type="button" className="draw-button" onClick={handleDraw}>
         🎲 {city ? 'הגרל עיר אחרת' : 'הגרל עיר'}
