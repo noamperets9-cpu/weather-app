@@ -41,8 +41,8 @@
 צריך [Node.js](https://nodejs.org/) (גרסה 20 ומעלה).
 
 ```bash
-git clone https://github.com/noamperets9-cpu/web-final-project.git
-cd web-final-project
+git clone https://github.com/noamperets9-cpu/weather-app.git
+cd weather-app
 npm install
 npm run dev
 ```
