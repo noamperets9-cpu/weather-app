@@ -6,6 +6,7 @@ export const CITIES: City[] = [
   { id: 'tel-aviv', name: 'תל אביב', country: 'ישראל', latitude: 32.08, longitude: 34.78 },
   { id: 'jerusalem', name: 'ירושלים', country: 'ישראל', latitude: 31.77, longitude: 35.21 },
   { id: 'haifa', name: 'חיפה', country: 'ישראל', latitude: 32.79, longitude: 34.99 },
+  { id: 'givat-shmuel', name: 'גבעת שמואל', country: 'ישראל', latitude: 32.08, longitude: 34.85 },
   { id: 'eilat', name: 'אילת', country: 'ישראל', latitude: 29.56, longitude: 34.95 },
   { id: 'london', name: 'לונדון', country: 'בריטניה', latitude: 51.51, longitude: -0.13 },
   { id: 'paris', name: 'פריז', country: 'צרפת', latitude: 48.85, longitude: 2.35 },
